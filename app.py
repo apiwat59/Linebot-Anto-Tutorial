@@ -50,12 +50,22 @@ def handle_message(event):
         anto.pub('gasza1', 1)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="เปิดไฟ 1 เเล้วขอรับนายท่าน))
+            TextSendMessage(text="ON1SUCESS"))
     elif(message == 'OFF1'):
         anto.pub('gasza1', 0)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="ปิดไฟ 1 เเล้วขอรับนายท่าน"))
+            TextSendMessage(text="OFF1SUCESS"))
+    elif(message == 'channel2 on'):
+        anto.pub('myChannel2', 1)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Turn On channel2"))
+    elif(message == 'channel2 off'):
+        anto.pub('myChannel2', 0)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="Turn Off channel2"))
     
 if __name__ == "__main__":
     anto.mqtt.connect()
