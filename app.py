@@ -18,7 +18,7 @@ app = Flask(__name__)
 # username of anto.io account
 user = 'apiwatpanyoi'
 # key of permission, generated on control panel anto.io
-key = '006Qqoa09BDHtILZvFDpaJYrpWJDnDbKSmwprAMn'
+key = 'ZM1xFGrwpWxe3ty5AbCzVAytrowGCBaz28pH6t5c'
 # your default thing.
 thing = 'gasza1'
 
@@ -46,27 +46,17 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
-    if(message == 'channel1 on'):
+    if(message == 'ON1'):
         anto.pub('gasza1', 1)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Turn On channel1"))
-    elif(message == 'channel1 off'):
+            TextSendMessage(text="เปิดไฟ 1 เเล้วขอรับนายท่าน))
+    elif(message == 'OFF1'):
         anto.pub('gasza1', 0)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Turn Off channel1"))
-    elif(message == 'channel2 on'):
-        anto.pub('myChannel2', 1)
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Turn On channel2"))
-    elif(message == 'channel2 off'):
-        anto.pub('myChannel2', 0)
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="Turn Off channel2"))
-
+            TextSendMessage(text="ปิดไฟ 1 เเล้วขอรับนายท่าน"))
+    
 if __name__ == "__main__":
     anto.mqtt.connect()
     app.run(debug=True)
