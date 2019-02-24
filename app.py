@@ -56,16 +56,26 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="OFF1SUCESS"))
-    elif(message == 'channel2 on'):
-        anto.pub('myChannel2', 1)
+    elif(message == 'ON2'):
+        anto.pub('gasza2', 1)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Turn On channel2"))
-    elif(message == 'channel2 off'):
-        anto.pub('myChannel2', 0)
+            TextSendMessage(text="ON2SUCESS"))
+    elif(message == 'OFF2'):
+        anto.pub('gasza2', 0)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="Turn Off channel2"))
+            TextSendMessage(text="OFF2SUCESS"))
+        elif(message == 'ON3'):
+        anto.pub('gasza3', 1)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="ON3SUCESS"))
+    elif(message == 'OFF3'):
+        anto.pub('gasza3', 0)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="OFF3SUCESS"))
     
 if __name__ == "__main__":
     anto.mqtt.connect()
