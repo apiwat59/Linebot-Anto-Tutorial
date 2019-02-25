@@ -10,17 +10,17 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage
 )
 
-line_bot_api = LineBotApi('YOUR_CHANNEL_ACCESS_TOKEN')
-handler = WebhookHandler('YOUR_CHANNEL_SECRET')
+line_bot_api = LineBotApi('NncLrzt2hAfj8NpyPP7DzQ9YS9IhGaH/ybNBFoEe3lrCq5Q+/dilnweOmLEpXOlMUcm/6l7r6vcE9DsvRus3tktCzArA9Qleo8xdSrIv3KmqRfIJzc3C4eyrWLFPAbGde1886PU2IzVdfXiH5wZOKwdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('7f04aa5a1efcc3f532f512ec9db25d07')
 
 app = Flask(__name__)
 
 # username of anto.io account
-user = 'YOUR_USERNAME'
+user = 'apiwatpanyoi'
 # key of permission, generated on control panel anto.io
-key = 'YOUR_KEY'
+key = 'ZM1xFGrwpWxe3ty5AbCzVAytrowGCBaz28pH6t5c'
 # your default thing.
-thing = 'YOUR_THING'
+thing = 'gasza1'
 
 anto = antolib.Anto(user, key, thing)
 
@@ -46,9 +46,26 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
-    # line_bot_api.reply_message(
-    #     event.reply_token,
-    #     TextSendMessage(text="Turn Off channel1"))
+    if(message == 'ON1'):
+        anto.pub('gasza1', 1)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="เปิดไฟดวง1เเล้วครับ"))
+    elif(message == 'OFF1'):
+        anto.pub('gasza1', 0)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="ปิดไฟดวง1เเล้วครับ"))
+    elif(message == 'ON2'):
+        anto.pub('gasza2', 1)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="เปิดไฟดวงที่2เเล้วครับ"))
+    elif(message == 'OFF2'):
+        anto.pub('gasza2', 0)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="ปิดไฟดวง2เเล้วครับ"))
 
 if __name__ == "__main__":
     anto.mqtt.connect()
