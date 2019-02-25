@@ -46,26 +46,26 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
-    if(message == 'ON1'):
+    if(message == 'channel1 on'):
         anto.pub('gasza1', 1)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="เปิดไฟดวง1เเล้วครับ"))
-    elif(message == 'OFF1'):
+            TextSendMessage(text="Turn On channel1"))
+    elif(message == 'channel1 off'):
         anto.pub('gasza1', 0)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="ปิดไฟดวง1เเล้วครับ"))
-    elif(message == 'ON2'):
-        anto.pub('gasza2', 1)
+            TextSendMessage(text="Turn Off channel1"))
+    elif(message == 'gasza2 on'):
+        anto.pub('myChannel2', 1)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="เปิดไฟดวงที่2เเล้วครับ"))
-    elif(message == 'OFF2'):
+            TextSendMessage(text="Turn On channel2"))
+    elif(message == 'channel2 off'):
         anto.pub('gasza2', 0)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="ปิดไฟดวง2เเล้วครับ"))
+            TextSendMessage(text="Turn Off channel2"))
 
 if __name__ == "__main__":
     anto.mqtt.connect()
